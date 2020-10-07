@@ -12,10 +12,33 @@ package store.sokolov.innopolis.homework_03.task_01;
  */
 public class Main {
     public static void main(String[] args) {
-        Number[] numbers = {123, 123L, 123.45D, 123.23F, 123};
-        //MathBox mathBox = new MathBox(numbers);
+        Number[] numbers = testData();
+        MathBox mathBox = new MathBox(numbers);
 
-        //System.out.println(mathBox.toString());
-        //System.out.println(mathBox.summator());
+        System.out.println(mathBox.toString());
+        System.out.println(mathBox.summator());
+        mathBox.splitter(2);
+
+        System.out.println(mathBox.toString());
+        System.out.println(mathBox.summator());
+
+        MathBox mathBox1 = new MathBox(new Number[]{123, 123L, 123.45D, 123.23F, (byte)15, (short)19, 123, (Number) 24});
+        MathBox mathBox2 = new MathBox(new Number[]{123L, 123.45D, 123.23F, (byte)15, (short)19, 123, (Number) 24, 123});
+        MathBox mathBox3 = new MathBox(new Number[]{123, 123.45D, 123.23F, (byte)15, (short)19, 123, (Number) 24});
+
+        System.out.println("hashCode (mathBox1) = " + mathBox1.hashCode());
+        System.out.println("hashCode (mathBox2) = " + mathBox2.hashCode());
+        System.out.println("hashCode (mathBox3) = " + mathBox3.hashCode());
+
+        System.out.println("mathBox1.equals(mathBox2) = " + mathBox1.equals(mathBox2));
+        System.out.println("mathBox1.equals(mathBox3) = " + mathBox1.equals(mathBox3));
+    }
+
+    /**
+     * Формирование тестовых данных
+     * @return массив тестовых данных
+     */
+    private static Number[] testData() {
+        return new Number[] {123, 123L, 123.45D, 123.23F, (byte)15, (short)19, 123, (Number) 24};
     }
 }

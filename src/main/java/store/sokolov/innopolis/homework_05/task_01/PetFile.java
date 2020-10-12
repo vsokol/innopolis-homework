@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class PetFile {
     private Map<String, Pet> petFile = new TreeMap<>();
+    // вспомогательный список для реализации сортировок и двоичного поиска
     private List<Pet> listForSortAndSearch = new ArrayList<>();
 
     /**
@@ -172,7 +173,7 @@ public class PetFile {
     /**
      * Вспомогательный класс для сравнения двух объектов класса {@link Pet} только по кличкам
      */
-    private static class SortedByPetName implements Comparator<Pet> {
+    protected static class SortedByPetName implements Comparator<Pet> {
         @Override
         public int compare(Pet o1, Pet o2) {
             return o1.getPetName().compareTo(o2.getPetName());

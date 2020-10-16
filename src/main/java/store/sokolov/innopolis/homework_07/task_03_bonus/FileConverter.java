@@ -49,22 +49,17 @@ public class FileConverter {
      * @throws IOException выбрасывается, если возникают ошибки при работе с файлами
      */
     public void convert() throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(fileSource);
-        InputStreamReader reader = new InputStreamReader(fileInputStream, charSetSource);
+        try (FileInputStream fileInputStream = new FileInputStream(fileSource);
+            InputStreamReader reader = new InputStreamReader(fileInputStream, charSetSource);
+            FileOutputStream fileOutputStream = new FileOutputStream(fileDestination);
+            OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream, charSetDestination)) {
 
-        FileOutputStream fileOutputStream = new FileOutputStream(fileDestination);
-        OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream, charSetDestination);
-
-        char[] buffer = new char[fileInputStream.available()];
-        while (reader.ready()) {
-            int count = reader.read(buffer);
-            writer.write(buffer);
+            char[] buffer = new char[fileInputStream.available()];
+            while (reader.ready()) {
+                int count = reader.read(buffer);
+                writer.write(buffer);
+            }
+            writer.flush();
         }
-
-        writer.flush();
-        reader.close();
-        fileInputStream.close();
-        writer.close();
-        fileOutputStream.close();
     }
 }

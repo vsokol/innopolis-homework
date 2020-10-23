@@ -14,9 +14,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class FactorialCalc extends Thread {
     /** очередь чисел на вычисление факториала */
-    private volatile ConcurrentLinkedQueue<Integer> queueNumbers;
+    private final ConcurrentLinkedQueue<Integer> queueNumbers;
     /** Кэш вычисленных факториалов*/
-    private volatile ConcurrentHashMap<Integer, BigInteger> cash;
+    private final ConcurrentHashMap<Integer, BigInteger> cash;
 
     /**
      * Консруктор класса
@@ -57,7 +57,7 @@ public class FactorialCalc extends Thread {
         while (true) {
             Integer number;
             // извлекаем число из очереди
-            synchronized (this) {
+            synchronized (queueNumbers) {
                 number = queueNumbers.poll();
             }
             if (number == null) {
@@ -65,7 +65,7 @@ public class FactorialCalc extends Thread {
             }
             // есть ли такой уже такой элемент в кэше
             BigInteger factorial = null;
-            synchronized (this) {
+            synchronized (cash) {
                 if (cash.containsKey(number)) {
                     factorial = cash.get(number);
                 }
@@ -74,7 +74,7 @@ public class FactorialCalc extends Thread {
                 // такого числа в кэше нет, запускаем вычисление
                 factorial = getFactorial(number);
                 // помещаем в кэш
-                synchronized (this) {
+                synchronized (cash) {
                     if (!cash.containsKey(number)) {
                         cash.put(number, factorial);
                     }

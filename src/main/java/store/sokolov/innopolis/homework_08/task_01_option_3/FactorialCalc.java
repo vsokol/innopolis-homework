@@ -57,28 +57,20 @@ public class FactorialCalc extends Thread {
         while (true) {
             Integer number;
             // извлекаем число из очереди
-            synchronized (queueNumbers) {
-                number = queueNumbers.poll();
-            }
+            // синхронизация не нужна, так как используется ConcurrentLinkedQueue
+            number = queueNumbers.poll();
             if (number == null) {
                 break;
             }
-            // есть ли такой уже такой элемент в кэше
-            BigInteger factorial = null;
-            synchronized (cash) {
-                if (cash.containsKey(number)) {
-                    factorial = cash.get(number);
-                }
-            }
+            // забираем значение из кэша, если оно там есть
+            // синхронизация не нужна, так как используется ConcurrentHashMap
+            BigInteger factorial = cash.get(number);
             if (factorial == null) {
                 // такого числа в кэше нет, запускаем вычисление
                 factorial = getFactorial(number);
                 // помещаем в кэш
-                synchronized (cash) {
-                    if (!cash.containsKey(number)) {
-                        cash.put(number, factorial);
-                    }
-                }
+                // синхронизация не нужна, так как используется атомарная операция для ConcurrentHashMap
+                cash.putIfAbsent(number, factorial);
             }
         }
     }

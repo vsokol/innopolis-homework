@@ -4,6 +4,7 @@ import store.sokolov.innopolis.homework_11.task_01_02.PropertyFileReadException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.nio.file.Paths;
@@ -25,6 +26,8 @@ public class Client {
     public static String cmdQuit;
     /** имя пользователя */
     public static String userName;
+    /** кодировка для консоли */
+    public static String consoleCharSet;
 
     /**
      * Запуск клиента
@@ -35,14 +38,12 @@ public class Client {
         System.out.println("Start client");
         String propertyPath;
         if (args == null || args.length == 0) {
-            //new IllegalArgumentException("Не задан путь и имя файла Server.properties");
-            propertyPath = Paths.get(".").toAbsolutePath().toString().substring(0, Paths.get(".").toAbsolutePath().toString().length() - 2);
+            //new IllegalArgumentException("Не задан путь и имя файла server.properties");
+            propertyPath = "client.properties";
         } else {
-//            String s = "D:\\java\\innopolis\\STC-31\\homework\\src\\main\\java\\store\\sokolov\\innopolis\\homework_11\\task_01\\client\\";
-//            propertyPath = Paths.get(s).toAbsolutePath().toString();
-            propertyPath = Paths.get(args[0]).toAbsolutePath().toString();
+            propertyPath = args[0];
         }
-        readProperty(propertyPath + "\\Client.properties");
+        readProperty(propertyPath);
         connect();
         System.out.println("Stop client");
     }
@@ -52,12 +53,13 @@ public class Client {
      * @throws PropertyFileReadException
      */
     private static void readProperty(String propertyFile) throws PropertyFileReadException {
-        try (FileInputStream fis = new FileInputStream(propertyFile)) {
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(propertyFile), "UTF-8")) {
             Properties property = new Properties();
-            property.load(fis);
+            property.load(reader);
             serverPort = Integer.parseInt(property.getProperty("server_port"));
             cmdQuit = property.getProperty("cmd_quit");
             userName = property.getProperty("user_name");
+            consoleCharSet = property.getProperty("console_char_set");
         } catch (IOException e) {
             throw new PropertyFileReadException("Ошибка чтения файла свойств '" + propertyFile + "'", e);
         }

@@ -23,7 +23,7 @@ public class ReceiveMessage extends Thread {
      */
     public ReceiveMessage(Socket socket) throws IOException {
         this.socket = socket;
-        reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
     }
 
     /**

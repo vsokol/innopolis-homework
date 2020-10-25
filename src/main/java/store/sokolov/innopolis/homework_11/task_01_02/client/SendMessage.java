@@ -11,7 +11,7 @@ public class SendMessage extends Thread {
     /**
      * писатель для отправки сообщений в сокета взаимодействия с сервером
      */
-    private final BufferedWriter writer;
+    private final PrintStream writer;
 
     /**
      * Конструктор для создания объета взаимодействия с пользователем, только отправка сообщений
@@ -21,7 +21,7 @@ public class SendMessage extends Thread {
      */
     public SendMessage(Socket socket) throws IOException {
         this.socket = socket;
-        writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        writer = new PrintStream(socket.getOutputStream(),true, "UTF-8");
     }
 
     /**
@@ -29,10 +29,10 @@ public class SendMessage extends Thread {
      */
     @Override
     public void run() {
-        try(BufferedReader console = new BufferedReader(new InputStreamReader(System.in))) {
+        try(BufferedReader console = new BufferedReader(new InputStreamReader(System.in, Client.consoleCharSet))) {
             while (true) {
                 String message = console.readLine();
-                sendMessage(message);
+                writer.println(message);
                 if (Client.cmdQuit.equals(message.toLowerCase())) {
                     break;
                 }
@@ -43,22 +43,10 @@ public class SendMessage extends Thread {
     }
 
     /**
-     * Отправляем сообщение на сервер
-     * @param message сообщение
-     * @throws IOException
-     */
-    protected void sendMessage(String message) throws IOException {
-        writer.write(message);
-        writer.newLine();
-        writer.flush();
-    }
-
-    /**
      * Отправляем имя пользователя на сервер
      * @param userName имя пользователя
-     * @throws IOException
      */
-    protected void sendUserName(String userName) throws IOException {
-        sendMessage(userName);
+    protected void sendUserName(String userName) {
+        writer.println(userName);
     }
 }

@@ -4,7 +4,7 @@
 + [Домашнее задание №7](readme.md#домашнее-задание-7)
 + [Домашнее задание №8](readme.md#домашнее-задание-8)
 ### Домашнее задание №3
-#### Задание 1 
+#### Задание 1 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_03/task_01)) 
 Написать класс MathBox, реализующий следующий функционал:
 - Конструктор на вход получает массив Number. Элементы не могут повторяться. Элементы массива внутри объекта раскладываются в подходящую коллекцию (выбрать самостоятельно).
 - Существует метод summator, возвращающий сумму всех элементов коллекции.
@@ -12,21 +12,19 @@
 - Необходимо правильно переопределить методы toString, hashCode, equals, чтобы можно было использовать MathBox для вывода данных на экран и хранение объектов этого класса в коллекциях (например, hashMap). Выполнение контракта обязательно!
 - Создать метод, который получает на вход Integer и если такое значение есть в коллекции, удаляет его.
 
-[Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_03/task_01)
-
 #### Задание 2 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_03/task_02))
 Создать класс ObjectBox, который будет хранить коллекцию Object.
 - У класса должен быть метод addObject, добавляющий объект в коллекцию.
 - У класса должен быть метод deleteObject, проверяющий наличие объекта в коллекции и при наличии удаляющий его.
 - Должен быть метод dump, выводящий содержимое коллекции в строку.
 
-#### Задание 3
+#### Задание 3 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_03/task_03))
 Доработать классы MathBox и ObjectBox таким образом, чтобы MathBox был наследником ObjectBox. Необходимо сделать такую связь, правильно распределить поля и методы. Функциональность в целом должна сохраниться. При попытке положить Object в MathBox должно создаваться исключение.
 
 [к оглавлению](#readme)
 
 ### Домашнее задание №5
-#### Задание 1 
+#### Задание 1 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_05)) 
 Разработать программу – картотеку домашних животных. У каждого животного есть уникальный идентификационный номер, кличка, хозяин (объект класс Person с полями – имя, возраст, пол), вес.
 
 Реализовать:
@@ -39,11 +37,11 @@
 [к оглавлению](#readme)
 
 ### Домашнее задание №7
-#### Задание 1
+#### Задание 1 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_07/task_01))
  
 Написать программу, читающую текстовый файл. Программа должна составлять отсортированный по алфавиту список слов, найденных в файле и сохранять его в файл-результат. Найденные слова не должны повторяться, регистр не должен учитываться. Одно слово в разных падежах – это разные слова.
 
-#### Задание 2
+#### Задание 2 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_07/task_02))
 
 Создать генератор текстовых файлов, работающий по следующим правилам:
 
@@ -56,9 +54,12 @@
 - Есть массив слов 1<=n4<=1000. Есть вероятность probability вхождения одного из слов этого массива в следующее предложение (1/probability).
 - Необходимо написать метод getFiles(String path, int n, int size, String[] words, int probability), который создаст n файлов размером size в каталоге path. words - массив слов, probability - вероятность.
 
+### Задание-бонус: ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_07/task_03_bonus)) 
+Напишите простую программу, которая читает файл в кодировке UTF-8, а пишет в другой файл в кодировке UTF-16. Использовать InputStreamReader/OutputStreamWriter
+
 [к оглавлению](#readme)
 
-### Домашнее задание №8
+### Домашнее задание №8 ([Решения](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08))
 
 Дан массив случайных чисел. Написать программу для вычисления факториалов всех элементов массива. Использовать пул потоков для решения задачи.
 
@@ -73,5 +74,11 @@
 3. комбинированный
 
 При чем вычислив факториал для одного числа, можно запомнить эти данные и использовать их для вычисления другого, что будет гораздо быстрее
+
+Решения:
+- ([Вариант 1](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_thread))
+- ([Вариант 2](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_future))
+- ([Вариант 3](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_option_3))
+- ([Вариант 4](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_stream))
 
 [к оглавлению](#readme)

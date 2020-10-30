@@ -63,7 +63,8 @@
 
 [к оглавлению](#readme)
 
-### Домашнее задание №8 ([Решения](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08))
+### Домашнее задание №8
+([Решения](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08))
 
 Дан массив случайных чисел. Написать программу для вычисления факториалов всех элементов массива. Использовать пул потоков для решения задачи.
 

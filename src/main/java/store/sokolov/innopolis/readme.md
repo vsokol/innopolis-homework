@@ -14,7 +14,7 @@
 
 [Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_03/task_01)
 
-#### Задание 2
+#### Задание 2 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_03/task_02))
 Создать класс ObjectBox, который будет хранить коллекцию Object.
 - У класса должен быть метод addObject, добавляющий объект в коллекцию.
 - У класса должен быть метод deleteObject, проверяющий наличие объекта в коллекции и при наличии удаляющий его.

@@ -18,6 +18,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException {
         System.out.println("ДЗ_13. Задание 2");
+        //OutOfMemoryError();
         String temp = System.getProperty("java.io.tmpdir");
         List<Object> list = new ArrayList<>();
         int count = 0;
@@ -33,7 +34,7 @@ public class Main {
         }
     }
 
-//    private static void OutOfMemoryError() {
+//    private static void OutOfMemoryError() throws CannotCompileException {
 //        ClassPool classPool = ClassPool.getDefault();
 //        int i = 0;
 //        while (true) {

@@ -10,17 +10,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <javaassist.version>3.27.0-GA</javaassist.version>
+        <start-class>store.sokolov.innopolis.homework_11.task_01_02.server.Server</start-class>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>${javaassist.version}</version>
-        </dependency>
-    </dependencies>
-
 
     <build>
         <plugins>

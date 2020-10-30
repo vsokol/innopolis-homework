@@ -3,6 +3,10 @@
 + [Домашнее задание №5](readme.md#домашнее-задание-5)
 + [Домашнее задание №7](readme.md#домашнее-задание-7)
 + [Домашнее задание №8](readme.md#домашнее-задание-8)
++ [Домашнее задание №10](readme.md#домашнее-задание-10)
++ [Домашнее задание №11](readme.md#домашнее-задание-11)
++ [Домашнее задание №12](readme.md#домашнее-задание-12)
++ [Домашнее задание №13](readme.md#домашнее-задание-13)
 ### Домашнее задание №3
 #### Задание 1 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_03/task_01)) 
 Написать класс MathBox, реализующий следующий функционал:
@@ -68,7 +72,6 @@
 Для данного примера использовать рекурсию - не очень хороший вариант, т.к. происходит большое выделение памяти, очень вероятен StackOverFlow. Лучше перемножать числа в простом цикле при этом создавать объект типа BigInteger
 
 По сути, есть несколько способа решения задания:
-
 1. распараллеливать вычисление факториала для одного числа
 2. распараллеливать вычисления для разных чисел
 3. комбинированный
@@ -76,9 +79,39 @@
 При чем вычислив факториал для одного числа, можно запомнить эти данные и использовать их для вычисления другого, что будет гораздо быстрее
 
 Решения:
-- ([Вариант 1](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_thread))
-- ([Вариант 2](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_future))
-- ([Вариант 3](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_option_3))
-- ([Вариант 4](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_stream))
+- [Вариант 1 (на потоках)](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_thread)
+- [Вариант 2 (с использование Future)](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_future)
+- [Вариант 3 (на независимых потоках с извлечением задания из очереди)](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_option_3)
+- [Вариант 4 (Stream API)](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_stream)
+
+[к оглавлению](#readme)
+
+### Домашнее задание №10 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_10/task_01))
+Необходимо написать программу, выполняющую следующее:
+- Программа с консоли построчно считывает код метода doWork. Код не должен требовать импорта дополнительных классов.
+- После ввода пустой строки считывание прекращается и считанные строки добавляются в тело метода public void doWork() в файле SomeClass.java.
+- Файл SomeClass.java компилируется программой (в рантайме) в файл SomeClass.class.
+- Полученный файл подгружается в программу с помощью кастомного загрузчика
+- Метод, введенный с консоли, исполняется в рантайме (вызывается у экземпляра объекта подгруженного класса)
+
+[к оглавлению](#readme)
+
+### Домашнее задание №11 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_11/task_01_02))
+Разработать приложение - многопользовательский чат, в котором участвует произвольное количество клиентов. Каждый клиент после запуска отправляет свое имя серверу. После чего начинает отправлять ему сообщения. Каждое сообщение сервер подписывает именем клиента и рассылает всем клиентам (broadcast).
+- добавить возможность отправки личных сообщений (unicast).
+- добавить возможность выхода из чата с помощью написанной в чате команды «quit»
+
+[к оглавлению](#readme)
+
+### Домашнее задание №12 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_08/task_01_stream))
+Перевести одну из предыдущих работ на использование стримов и лямбда-выражений там, где это уместно (возможно, жертвуя производительностью)
+
+[к оглавлению](#readme)
+
+### Доамашнее задание №13
+#### Задание 1 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_13/task_01))
+Необходимо создать программу, которая продемонстрирует утечку памяти в Java. При этом объекты должны не только создаваться, но и периодически частично удаляться, чтобы GC имел возможность очищать часть памяти. Через некоторое время программа должна завершиться с ошибкой OutOfMemoryError c пометкой Java Heap Space.
+#### Задание 2 ([Решение](https://github.com/vsokol/innopolis-homework/tree/master/src/main/java/store/sokolov/innopolis/homework_13/task_02))
+Доработать программу так, чтобы ошибка OutOfMemoryError возникала в Metaspace /Permanent Generation
 
 [к оглавлению](#readme)

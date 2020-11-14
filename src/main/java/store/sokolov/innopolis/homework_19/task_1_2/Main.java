@@ -134,21 +134,17 @@ public class Main {
         try {
             connection.setAutoCommit(false);
 
-            String sql = "update checked_object" +
-                    " set name = ?" +
+            String sql = "delete from checked_object" +
                     " where id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, "Отдел №888-888-888");
-            statement.setLong(2, 10007);
-            statement.executeUpdate();
+            statement.setLong(1, 10007);
+            statement.execute();
 
-            sql = "update checked_object" +
-                    " set name = ?" +
+            sql = "delete from checked_object" +
                     " where id1 = ?";
             statement = connection.prepareStatement(sql);
-            statement.setString(1, "Отдел № ---");
-            statement.setLong(2, 10005);
-            statement.executeUpdate();
+            statement.setLong(1, 10005);
+            statement.execute();
 
             connection.commit();
         } catch (SQLException e) {

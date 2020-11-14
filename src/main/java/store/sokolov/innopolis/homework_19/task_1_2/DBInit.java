@@ -44,9 +44,10 @@ public class DBInit {
      * @throws IOException выбрасывается при возникновении ошибки при чтении файлов
      */
     public void executeSQLs() throws IOException, SQLException {
-        List<String> listOfSQL = getListOfSQL();
+        List<String> listOfSQL = getListOfSQL(sqlFolder);
         Statement sqlStatement = connection.createStatement();
         for (String file : listOfSQL) {
+            System.out.println("Выполнение - " + file);
             String sql = getSQLFromFile(file);
             sqlStatement.execute(sql);
         }
@@ -57,7 +58,7 @@ public class DBInit {
      * Маска поиска - файл должен начинаться на "db-" и оканчиваться на ".sql"
      * @return список файлов
      */
-    public List<String> getListOfSQL() {
+    public List<String> getListOfSQL(String sqlFolder) {
         List<String> listOfSQL = new ArrayList<>();
         File folder = new File(sqlFolder);
         File[] files = folder.listFiles(

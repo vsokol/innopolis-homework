@@ -22,7 +22,8 @@ import java.lang.reflect.Method;
  */
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
-        //String classFileName = "D:\\java\\innopolis\\STC-31\\homework\\src\\main\\java\\store\\sokolov\\innopolis\\homework_10\\task_01\\SomeClass.java"
+        System.out.println("Домашнее задание 10");
+        //String classFileName = "D:\\java\\innopolis\\STC-31\\homework\\src\\main\\java\\store\\sokolov\\innopolis\\homework_10\\task_01\\SomeClass.java";
         String classFileName = args[0];
         // создаем загрузчик классов
         MyClassLoader classLoader = new MyClassLoader(classFileName);

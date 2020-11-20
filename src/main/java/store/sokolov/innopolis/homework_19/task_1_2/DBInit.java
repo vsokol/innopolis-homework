@@ -1,5 +1,8 @@
 package store.sokolov.innopolis.homework_19.task_1_2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
@@ -22,6 +25,7 @@ public class DBInit {
     private Connection connection;
     /** каталог, из которого читаются файлы с запросами */
     private String sqlFolder;
+    private final Logger logger = LoggerFactory.getLogger("DBInit");
 
     /**
      * Конструктор
@@ -47,7 +51,8 @@ public class DBInit {
         List<String> listOfSQL = getListOfSQL(sqlFolder);
         Statement sqlStatement = connection.createStatement();
         for (String file : listOfSQL) {
-            System.out.println("Выполнение - " + file);
+            //System.out.println("Выполнение - " + file);
+            logger.info("Выполнение - " + file);
             String sql = getSQLFromFile(file);
             sqlStatement.execute(sql);
         }
